@@ -1,5 +1,7 @@
 package com.mycompany.tictactoe;
 
+import javax.swing.JButton;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,14 +12,58 @@ package com.mycompany.tictactoe;
  * @author student
  */
 public class View extends javax.swing.JFrame {
-
+       
+    boolean whoseTurn;
+    boolean gameOver;
+    
     /**
      * Creates new form View
      */
     public View() {
         initComponents();
+        this.whoseTurn = true;
+        this.gameOver = false;
     }
 
+    
+    private String isWinner() {
+        // Get the text contents of each button.  
+        // Be sure you're accessing the
+        // buttons in the order you want.  
+        // The Netbeans UI sometimes mixes up
+        // the numbers on the button names so they're not in the 
+        // order you expect
+        String[][] status = new String[3][3];
+        status[0][0] = jButton1.getText();
+        status[0][1] = jButton2.getText();
+        status[0][2] = jButton3.getText();
+        status[1][0] = jButton4.getText();
+        status[1][1] = jButton5.getText();
+        status[1][2] = jButton6.getText();
+        status[2][0] = jButton7.getText();
+        status[2][1] = jButton8.getText();
+        status[2][2] = jButton9.getText();
+
+        // Check the rows and columns for a tic tac toe     
+        for (int i=0; i<3; i++) {
+            if (status[i][0].equals(status[i][1]) && status[i][0].equals(status[i][2]) && !status[i][0].equals(""))
+                return status[i][0];
+            if (status[0][i].equals(status[1][i]) && status[0][i].equals(status[2][i]) && !status[0][i].equals(""))
+                return status[0][i];
+        }
+
+        // Check the diagonals
+        if (status[0][0].equals(status[1][1]) && status[0][0].equals(status[2][2]))
+            return status[0][0];
+        if (status[0][2].equals(status[1][1]) && status[0][2].equals(status[2][0]))
+            return status[0][2];
+
+        // If we haven't found it, then return a blank string
+        return "";
+    }
+
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,6 +86,7 @@ public class View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton1.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
         jButton1.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,6 +94,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
         jButton2.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +102,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
         jButton3.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +110,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
         jButton4.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +118,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
         jButton5.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +126,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
         jButton6.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +134,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
         jButton7.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +142,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
         jButton8.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +150,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
         jButton9.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +158,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
         jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -111,7 +167,7 @@ public class View extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
@@ -128,20 +184,18 @@ public class View extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(42, 42, 42)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(46, 46, 46)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(46, 46, 46)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
+                .addGap(70, 70, 70)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addGap(122, 122, 122)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -163,7 +217,17 @@ public class View extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onClick
-        System.out.println("Clixed");
+        JButton button = (JButton)evt.getSource();
+        if (button.getText().equals("") && !this.gameOver) {
+            String player = (this.whoseTurn) ? "X" : "O";
+            button.setText(player);
+            String winner = this.isWinner();
+            if(!winner.equals("")) {
+                jLabel1.setText(winner+" WINS THE GAME!!");
+                this.gameOver = true;
+            }
+            this.whoseTurn = !this.whoseTurn;
+        }
     }//GEN-LAST:event_onClick
 
 
