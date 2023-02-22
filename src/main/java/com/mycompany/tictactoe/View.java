@@ -27,6 +27,7 @@ public class View extends javax.swing.JFrame {
 
     
     private String isWinner() {
+	boolean draw = true;
         // Get the text contents of each button.  
         // Be sure you're accessing the
         // buttons in the order you want.  
@@ -58,8 +59,15 @@ public class View extends javax.swing.JFrame {
         if (status[0][2].equals(status[1][1]) && status[0][2].equals(status[2][0]))
             return status[0][2];
 
+	for(int i = 0; i < status.length; i++) {
+		for(int j = 0; j < status.length; j++) {
+			if(status[i][j].equals("")) {
+				draw = false;
+			}
+		}
+	}
         // If we haven't found it, then return a blank string
-        return "";
+        return (draw) ? "draw" : "";
     }
 
 
@@ -159,7 +167,8 @@ public class View extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("TicTacToe : X to move");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,10 +229,11 @@ public class View extends javax.swing.JFrame {
         JButton button = (JButton)evt.getSource();
         if (button.getText().equals("") && !this.gameOver) {
             String player = (this.whoseTurn) ? "X" : "O";
+		jLabel1.setText("TicTacToe : " + ((this.whoseTurn) ? "O" : "X") + " to move");
             button.setText(player);
             String winner = this.isWinner();
             if(!winner.equals("")) {
-                jLabel1.setText(winner+" WINS THE GAME!!");
+                jLabel1.setText(winner.equals("draw") ? ("ITS A DRAW") : (winner + " WINS THE GAME!"));
                 this.gameOver = true;
             }
             this.whoseTurn = !this.whoseTurn;
